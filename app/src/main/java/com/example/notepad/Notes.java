@@ -7,7 +7,7 @@ public class Notes {
 
     public Notes(String title, String content) {
         this.title = title;
-        this.content = this.content;
+        this.content = content;
     }
 
     public String getTitle() {

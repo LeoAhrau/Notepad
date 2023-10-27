@@ -4,54 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/beige">
 
-
-    <Button
-        android:id="@+id/btn_load"
-        android:layout_width="139dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="612dp"
-        android:text="Load"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_create_note"
-        android:layout_width="147dp"
-        android:layout_height="92dp"
-        android:text="Create New Note"
+        android:layout_width="@dimen/_150dp"
+        android:layout_height="@dimen/_95dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/create_new_note"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.957" />
 
     <ListView
         android:id="@+id/lv_notes"
         android:layout_width="match_parent"
-        android:layout_height="391dp"
+        android:layout_height="@dimen/_500dp"
+        android:layout_marginLeft="@dimen/margin_25dp"
+        android:layout_marginRight="@dimen/margin_25dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.304" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NotePad"
+        android:text="@string/notepad"
+        android:textStyle="bold"
+        android:textSize="@dimen/_40sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.007" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.notepad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,69 +11,53 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
+//byggd enligt MVC
 public class MainActivity extends AppCompatActivity {
 
+    // Deklarera ListView och Adapter.
     ListView notesList;
-    ArrayAdapter<Notes> noteAdapter;
+    NotesAdapter notesAdapter;;
+    DataManager dataManager = new DataManager();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        // Koppla ListView och Knapparna till elementen i xml filen.
         notesList = findViewById(R.id.lv_notes);
         Button createNote = findViewById(R.id.btn_create_note);
-        Button loadNote = findViewById(R.id.btn_load);
 
-        noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, DataManager.notes);
-        notesList.setAdapter(noteAdapter);
+        // Initialisera Adaptern med notes listan från DataManager.
+        notesAdapter = new NotesAdapter(this, DataManager.notes);
+        notesList.setAdapter(notesAdapter);
 
+        // Rensa existerande notes i DataManager för att förhindra kopior.
         DataManager.notes.clear();
-        File directory = new File(getFilesDir(), "text");
-        if(directory.exists()) {
-            File[] files = directory.listFiles();
-            for(File file : files) {
-                if(file.getName().endsWith("_content.txt")) {
-                    String title = file.getName().replace("_content.txt", "");
-                    try {
-                        Scanner titleScanner = new Scanner(new File(directory, title + ".txt"));
-                        String titleContent = titleScanner.nextLine();
-                        titleScanner.close();
 
-                        Scanner contentScanner = new Scanner(new File(directory, title + "_content.txt"));
-                        String noteContent = contentScanner.nextLine();
-                        contentScanner.close();
+        // Skapar en directory referens för att läsa sparade notes.
+        dataManager.loadNotes(this);
 
-                        DataManager.notes.add(new Notes(titleContent, noteContent));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-
+        // När createNote clickas navigerar man till NotesActivity.
         createNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, NotesActivity.class);
                 startActivity(intent);
-
             }
         });
 
-        loadNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                noteAdapter.notifyDataSetChanged();
-            }
-        });
-
+        // När en note i listviewen clickas navigerar man till NotesActivity och skickar med NoteTitle.
         notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -82,40 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
+    // Varje gång man kommer tillbaka till MainActivity uppdaterar man listan genom notifyDataSetChanged.
     @Override
     protected void onResume() {
         super.onResume();
-        noteAdapter.notifyDataSetChanged();
-
+        notesAdapter.notifyDataSetChanged();
     }
-
 }
-
-//    private void loadNotesFromInternalStorage() {
-//        DataManager.notes.clear();
-//        File directory = new File(getFilesDir(), "text");
-//        if(directory.exists()) {
-//            File[] files = directory.listFiles();
-//            for(File file : files) {
-//                if(file.getName().endsWith("_content.txt")) {
-//                    String title = file.getName().replace("_content.txt", "");
-//                    try {
-//                        Scanner titleScanner = new Scanner(new File(directory, title + ".txt"));
-//                        String titleContent = titleScanner.nextLine();
-//                        titleScanner.close();
-//
-//                        Scanner contentScanner = new Scanner(new File(directory, title + "_content.txt"));
-//                        String noteContent = contentScanner.nextLine();
-//                        contentScanner.close();
-//
-//                        DataManager.notes.add(new Notes(titleContent, noteContent));
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        }
-//    }

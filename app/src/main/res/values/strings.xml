@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Notepad</string>
+    <string name="delete_note">Delete note</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="cancel">Cancel</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="create_new_note">Create New Note</string>
+    <string name="notepad">NotePad</string>
 </resources>

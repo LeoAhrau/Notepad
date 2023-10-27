@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_100dp"
+        app:cardBackgroundColor="@color/beige"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,49 +23,61 @@
             android:id="@+id/btn_save_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
 
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:text="Save" />
+            android:layout_marginStart="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="@string/save" />
 
         <Button
             android:id="@+id/btn_clear_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="155dp"
-            android:layout_marginTop="20dp"
-            android:text="Clear" />
+
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="@dimen/_155dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="@string/clear" />
 
 
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="260dp"
-            android:layout_marginTop="20dp"
-            android:text="Cancel" />
+
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="@dimen/_260dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="@string/cancel" />
 
     </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/et_title_input"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_height="@dimen/_50dp"
+        android:layout_marginLeft="@dimen/_50dp"
+        android:layout_marginRight="@dimen/_50dp"
+        android:hint="@string/title"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <EditText
         android:id="@+id/et_content_input"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_height="@dimen/_500dp"
+        android:layout_marginLeft="@dimen/_50dp"
+        android:layout_marginRight="@dimen/_50dp"
+        android:gravity="start"
+        android:hint="@string/content"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,11 +87,14 @@
         app:layout_constraintVertical_bias="0.536" />
 
     <Button
+        android:backgroundTint="@color/white"
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Delete note"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/delete_note"
+        
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
