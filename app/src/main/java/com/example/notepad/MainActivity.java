@@ -1,30 +1,21 @@
 package com.example.notepad;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.io.File;
-import java.util.List;
-import java.util.Scanner;
 
 //byggd enligt MVC
 public class MainActivity extends AppCompatActivity {
 
     // Deklarera ListView och Adapter.
     ListView notesList;
-    NotesAdapter notesAdapter;;
+    NotesAdapter notesAdapter;
     DataManager dataManager = new DataManager();
 
 

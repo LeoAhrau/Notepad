@@ -1,12 +1,7 @@
 package com.example.notepad;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.widget.Toast;
-
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;

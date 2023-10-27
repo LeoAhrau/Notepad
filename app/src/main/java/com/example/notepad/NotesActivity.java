@@ -1,24 +1,17 @@
 package com.example.notepad;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class NotesActivity extends AppCompatActivity {
@@ -27,7 +20,8 @@ public class NotesActivity extends AppCompatActivity {
     EditText titleInput;
     EditText contentInput;
 
-    private String originalTitle = null;
+    String originalTitle = null;
+
 
     // Skapar en DataManager för att hantera notes
     DataManager dataManager = new DataManager();
@@ -38,6 +32,7 @@ public class NotesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notes);
 
         // Kopplar och initialiserar
+
         titleInput = findViewById(R.id.et_title_input);
         contentInput = findViewById(R.id.et_content_input);
         Button deleteNote = findViewById(R.id.btn_delete);
